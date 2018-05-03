@@ -1,5 +1,6 @@
 src/
 dev/
-sql/
+test/
 views/
 db.lock
+config.json
