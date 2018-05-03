@@ -1,6 +1,6 @@
 {
   "name": "fpm-plugin-rbac-mysql",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Rbac Plugin With Mysql",
   "main": "lib/index.js",
   "scripts": {
