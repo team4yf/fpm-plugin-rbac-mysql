@@ -1,6 +1,6 @@
 'use strict';
-import { Fpm } from 'yf-fpm-server'
-import plugin from '../src'
+const { Fpm } = require('yf-fpm-server');
+const plugin = require('../src');
 let app = new Fpm()
 plugin.bind(app)
 
@@ -8,10 +8,9 @@ let biz = app.createBiz('0.0.1');
 
 biz.addSubModules('test',{
 	foo: async args => {
-		console.log(app.getPlugins())
 		try{
 			let loginInfo = {}
-			const rbac = await app.rbacFactory.getRbac(11)
+			const rbac = await app.rbacFactory.getRbac(3)
 			loginInfo.rbac = rbac.getAcl()
 			loginInfo.role = rbac.getRole()
 			return Promise.resolve(loginInfo)

@@ -1,7 +1,6 @@
-var should = require("chai").should();
-var YF = require("yf-fpm-client-nodejs").default;
-
-YF.init({appkey: '123123', masterKey: '123123', endpoint: 'http://localhost:9999/api'});
+const { init, Func } = require("fpmc-jssdk");
+const assert = require('assert');
+init({ appkey:'123123', masterKey:'123123', endpoint: 'http://localhost:9999/api' });
 
 
 describe('Function', function(){
@@ -15,8 +14,63 @@ describe('Function', function(){
   })
 
   it('Function A', function(done){
-    var func = new YF.Func('test.foo');
+    var func = new Func('test.foo');
     func.invoke({})
+      .then(function(data){
+        console.log(data)
+        done();
+      }).catch(function(err){
+        done(err);
+      })
+  })
+
+  it('Function A', function(done){
+    var func = new Func('rbac.grant');
+    func.invoke({role_id: 3, group_id : 3, code: 7 })
+      .then(function(data){
+        console.log(data)
+        done();
+      }).catch(function(err){
+        done(err);
+      })
+  })
+
+  it('Function A', function(done){
+    var func = new Func('rbac.grant');
+    func.invoke({role_id: 3, group_id : 3, code: 6 })
+      .then(function(data){
+        console.log(data)
+        done();
+      }).catch(function(err){
+        done(err);
+      })
+  })
+
+  it('Function A', function(done){
+    var func = new Func('rbac.grant');
+    func.invoke({role_id: 3, group_id : 3, code: 5 })
+      .then(function(data){
+        console.log(data)
+        done();
+      }).catch(function(err){
+        done(err);
+      })
+  })
+
+  it('Function A', function(done){
+    var func = new Func('rbac.grant');
+    func.invoke({role_id: 3, group_id : 3, code: 4 })
+      .then(function(data){
+        console.log(data)
+        done();
+      }).catch(function(err){
+        done(err);
+      })
+  })
+
+  it('Function A', function(done){
+    var func = new Func('rbac.grant');
+    func.invoke({role_id: 3, group_id : 3, code: 0 })
       .then(function(data){
         console.log(data)
         done();

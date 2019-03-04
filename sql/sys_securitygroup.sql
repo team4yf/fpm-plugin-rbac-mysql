@@ -10,8 +10,7 @@ CREATE TABLE IF NOT EXISTS `sys_securitygroup` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='权限安全组';
 
 INSERT INTO `sys_securitygroup` (`id`, `title`, `remark`, `delflag`, `createAt`, `updateAt`) VALUES
-(3, 'LOCAL MANAGER ADMIN', '本地管理员，拥有最高权限', 0, 0, 0),
-(4, 'LOCAL ADMIN', '本地管理员，拥有后台管理权限', 0, 0, 0),
-(5, 'DEFAULT ADMIN', '默认管理员，拥有后台部分管理权限', 0, 0, 0),
-(6, 'DEFAULT USER', '默认用户组，拥有处理部分业务数据的权限', 0, 0, 0),
-(7, 'DEFAULT MANAGER', '默认的经理安全组', 0, 0, 0);
+(1, 'LOCAL MANAGER ADMIN', '本地管理员，拥有最高权限', 0, 0, 0),
+(2, 'LOCAL ADMIN', '本地管理员，拥有后台管理权限', 0, 0, 0),
+(3, 'DEFAULT ADMIN', '默认管理员，拥有后台部分管理权限', 0, 0, 0),
+(4, 'DEFAULT USER', '默认用户组，拥有处理部分业务数据的权限', 0, 0, 0);

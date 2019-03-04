@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS `sys_securityacl` (
 
 INSERT INTO `sys_securityacl` (`id`, `delflag`, `createAt`, `updateAt`, `name`, `url`, `group_id`) VALUES
 (1, 0, 0, 0, '设备列表查看', '/device/list', 3),
-(2, 0, 0, 0, '设备添加', '/device/add', 7);
+(2, 0, 0, 0, '设备添加', '/device/add', 3);
