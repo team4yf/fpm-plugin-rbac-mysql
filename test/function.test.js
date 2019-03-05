@@ -14,8 +14,8 @@ describe('Function', function(){
   })
 
   it('Function A', function(done){
-    var func = new Func('test.foo');
-    func.invoke({})
+    var func = new Func('rbac.getInfo');
+    func.invoke({ role_id: 3})
       .then(function(data){
         console.log(data)
         done();
