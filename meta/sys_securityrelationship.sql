@@ -11,11 +11,4 @@ CREATE TABLE IF NOT EXISTS `sys_securityrelationship` (
   `createAt` bigint(20) NOT NULL DEFAULT '0',
   `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='安全组和安全角色关系表,Y：拥有该权限,N：没有该权限';
-
-
-INSERT INTO `sys_securityrelationship` (`id`, `group_id`, `role_id`, `can_create`, `can_update`, `can_read`, `can_delete`, `delflag`, `createAt`, `updateAt`) VALUES
-(3, 3, 3, 1, 1, 1, 1, 0, 0, 0),
-(5, 3, 4, 1, 1, 1, 1, 0, 0, 0),
-(6, 4, 3, 1, 1, 1, 1, 0, 0, 0),
-(7, 4, 4, 1, 1, 1, 1, 0, 0, 0);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='安全组和安全角色关系表,Y：拥有该权限,N：没有该权限';

@@ -50,7 +50,18 @@ module.exports = {
           })
         }
         
-      }
+      },
+      mock: async () => {
+        try {
+          await fpm.M.install(path.join(__dirname, '../mock'))  
+          return 1;
+        } catch (error) {
+          fpm.logger.error(error);
+          return Promise.reject({
+            message: 'Install Plugin fpm-plugin-rbac-mysql Error! Cant run the mock/*.sql files successlly!'
+          });
+        }
+      },
     }
 
     fpm.registerAction('BEFORE_SERVER_START', () => {
@@ -66,13 +77,12 @@ module.exports = {
           return Promise.reject({errno: -1, error: e})
         }
       }
+      fpm.extendModule('rbac', bizModule);
       if(fpm.M){
-        fpm.M.install(path.join(__dirname, '../sql'))
-        .then(() => {
-          fpm.extendModule('rbac', bizModule);
-        })
+        fpm.M.install(path.join(__dirname, '../meta'))
         .catch(e => {
           fpm.logger.error(e);
+          throw new Error('Install Plugin fpm-plugin-rbac-mysql Error! Cant run the mock/*.sql files successlly!')
         })
       }
     })

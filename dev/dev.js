@@ -28,3 +28,7 @@ app.addBizModules(biz);
 app.runAction('INIT', app)
 
 app.run()
+	.then( () => {
+		app.execute('rbac.mock')
+			.catch(console.error)
+	})
