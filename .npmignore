@@ -6,3 +6,4 @@ docker-*.dev.yml
 db.lock
 .babelrc
 config.json
+*.log

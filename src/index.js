@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const path = require('path');
+const debug = require('debug')('fpm-plugin-rbac-mysql');
 const { Factory } = require('./Rbac.js');
 
 module.exports = {
@@ -43,7 +44,8 @@ module.exports = {
           }
           return 1;  
         } catch (error) {
-          console.log(error)
+          debug(error);
+          fpm.logger.error(error)
           return Promise.reject({
             message: `Grant Error For ROLE_ID: ${role_id}, GROUP_ID: ${group_id}, CODE: ${code}`,
             error,
@@ -64,7 +66,7 @@ module.exports = {
       },
     }
 
-    fpm.registerAction('BEFORE_SERVER_START', () => {
+    fpm.registerAction('BEFORE_SERVER_START', async () => {
       fpm.rbacFactory = rbacFactory
       bizModule.getInfo = async ({ role_id }) => {
         try{
@@ -79,13 +81,14 @@ module.exports = {
       }
       fpm.extendModule('rbac', bizModule);
       if(fpm.M){
-        fpm.M.install(path.join(__dirname, '../meta'))
-        .catch(e => {
-          fpm.logger.error(e);
-          throw new Error('Install Plugin fpm-plugin-rbac-mysql Error! Cant run the mock/*.sql files successlly!')
-        })
+        try {
+          await fpm.M.install(path.join(__dirname, '../meta'))  
+        } catch (error) {
+          debug(error);
+          fpm.logger.error(error);
+        }
       }
-    })
+    }, 10)
 
   }
 }
